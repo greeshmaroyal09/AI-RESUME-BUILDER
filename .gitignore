@@ -1,0 +1,33 @@
+# Python / FastAPI
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+.venv/
+env/
+.env
+
+# SQLite
+*.sqlite3
+*.db
+backend/resume.db
+
+# React / Vite
+node_modules/
+dist/
+build/
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Submission Zips
+Greeshma_Royal_AI_Resume_Builder_Submission/
+Greeshma_Royal_AI_Resume_Builder_Submission.zip

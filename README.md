@@ -1,73 +1,337 @@
 # AI Resume Builder / Career Intelligence Platform
 
 ## Project Overview
-The AI Resume Builder is an intelligent, conversational career intelligence platform designed to seamlessly gather, validate, and format a user's professional background into an ATS-friendly, high-quality resume. Moving away from static "dumb forms," the application leverages an intelligent AI workflow to validate inputs, ask contextual follow-up questions, and iteratively build robust profiles.
 
-## Features
-- **Conversational Profile Builder:** An AI-powered assistant that actively guides the user step-by-step, verifying information like dates, URLs, and numeric inputs before accepting them.
-- **Smart Validation Logic:** Rejects meaningless inputs (e.g., "OK", "yes") and asks clarifying questions, ensuring only high-quality data enters the profile.
-- **Dynamic Dark/Light Mode:** Full theming support across the entire application with persistence.
-- **Job Description (JD) Workspace:** Add target job descriptions to let the AI tailor the generated resumes specifically for those roles.
-- **Resume History & Export:** Keeps an archived history of tailored sessions. Easily export results as PDF or DOCX.
-- **Full Edit/Delete Lifecycle:** Users can revisit and edit sections of their profile dynamically without starting from scratch. 
-- **Mobile-Responsive UI:** Developed using modern Tailwind CSS utilities for seamless use on any device.
+AI Resume Builder is an intelligent conversational career intelligence platform that helps users create, analyze, optimize, and tailor professional resumes. Unlike traditional form-based resume builders, the platform uses an AI-powered conversational workflow to collect, validate, and structure professional information into high-quality ATS-friendly resumes.
+
+The platform also allows users to upload existing resumes for AI-driven analysis, ATS evaluation, skill gap identification, and personalized improvement recommendations.
+
+---
+
+## Key Features
+
+### Conversational AI Profile Builder
+- AI-guided profile creation experience.
+- Collects professional information through natural conversations.
+- Eliminates the need for lengthy manual forms.
+- Dynamically asks contextual follow-up questions.
+
+### Smart Validation Engine
+- Validates dates, URLs, contact details, and structured inputs.
+- Rejects low-quality or meaningless responses.
+- Ensures complete and professional profile information.
+
+### Resume Generation
+- Generates structured ATS-friendly resumes.
+- Uses collected profile information to build professional resume content.
+- Supports iterative profile improvement.
+
+### AI Resume Tailoring
+- Tailor resumes for specific job descriptions.
+- Highlights relevant skills and experience.
+- Improves resume relevance for targeted roles.
+- Generates customized resume versions based on job requirements.
+
+### Job Description Workspace
+- Save and manage multiple job descriptions.
+- Select target job descriptions for tailoring.
+- Maintain a reusable library of job opportunities.
+
+### Resume Analysis & ATS Evaluation
+- Upload existing PDF or DOCX resumes.
+- AI-powered resume parsing and analysis.
+- ATS compatibility scoring.
+- Resume quality assessment.
+- Matching skills identification.
+- Missing skills detection.
+- Improvement recommendations.
+
+### Skill Gap Analysis
+- Compare uploaded resumes against target roles.
+- Identify missing technical and professional skills.
+- Highlight high-priority improvement areas.
+- Generate actionable recommendations.
+
+### Resume History
+- Stores previously generated tailored resumes.
+- Allows users to revisit and review past sessions.
+- Maintains historical resume versions.
+
+### Export Support
+- Export generated resumes in PDF format.
+- Export generated resumes in DOCX format.
+
+### Dark / Light Mode
+- Fully supported theme switching.
+- Persistent user preference storage.
+
+### Responsive Design
+- Mobile-friendly user experience.
+- Optimized layouts for desktop, tablet, and mobile devices.
+
+---
 
 ## Technology Stack
-- **Frontend:** React, TypeScript, Vite, Tailwind CSS, Zustand (State Management), Lucide React (Icons).
-- **Backend:** Python, FastAPI, SQLAlchemy (SQLite), Uvicorn, Google Generative AI (Gemini).
-- **Architecture:** Client-Server model with a RESTful JSON API layer and persistent SQLite relational database.
 
-## Architecture
-The platform is separated into a Vite-powered React frontend and a FastAPI-driven Python backend. State is managed globally via Zustand on the frontend, whilst the backend utilizes a stateful loop structure within `ai_assistant.py` to maintain multi-turn context and enforce strict schema validation for profile building.
+### Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Zustand
+- Lucide React
 
-## Installation Steps
+### Backend
+- Python
+- FastAPI
+- SQLAlchemy
+- SQLite
+- Uvicorn
+
+### AI Services
+- Google Gemini API
+
+---
+
+## System Architecture
+
+The application follows a client-server architecture.
+
+### Frontend
+The frontend is built using React, TypeScript, and Vite. Zustand is used for lightweight global state management, while Tailwind CSS provides responsive and modern UI components.
+
+### Backend
+The backend is built with FastAPI and SQLAlchemy. SQLite is used for persistent storage. AI workflows are powered through Gemini integration and structured validation pipelines.
+
+### AI Workflow
+
+```text
+User Input
+     ↓
+AI Validation
+     ↓
+Profile Construction
+     ↓
+Resume Generation
+     ↓
+Resume Tailoring
+     ↓
+ATS Analysis
+     ↓
+Recommendations
+```
+
+## Installation
 
 ### Prerequisites
-- Node.js (v18+)
+
+- Node.js v18+
 - Python 3.10+
-- A valid Gemini API Key
+- Gemini API Key
 
-### Backend Setup
-1. Open a terminal and navigate to the `backend` directory.
-2. Create a virtual environment:
-   `python -m venv venv`
-3. Activate the virtual environment:
-   - Windows: `.\venv\Scripts\activate`
-   - Mac/Linux: `source venv/bin/activate`
-4. Install dependencies:
-   `pip install -r requirements.txt`
-5. Create a `.env` file in the `backend` folder and add your Gemini API Key:
-   `GEMINI_API_KEY="your_api_key_here"`
+---
 
-### Frontend Setup
-1. Open a terminal and navigate to the `frontend` directory.
-2. Install Node dependencies:
-   `npm install`
-3. Create a `.env` file in the `frontend` folder if you need a custom API endpoint (defaults to `http://127.0.0.1:8000`).
+## Backend Setup
 
-## How to Run Backend
-From the `backend` directory, ensure your virtual environment is active, then run:
+Navigate to the backend directory:
+
+```bash
+cd backend
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate the environment:
+
+### Windows
+
+```bash
+.\venv\Scripts\activate
+```
+
+### Mac/Linux
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+Run backend:
+
 ```bash
 uvicorn app.main:app --reload
 ```
-The API will be available at `http://127.0.0.1:8000`.
 
-## How to Run Frontend
-From the `frontend` directory, run:
+Backend will run at:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## Frontend Setup
+
+Navigate to frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
+
 ```bash
 npm run dev
 ```
-The UI will be accessible locally at `http://localhost:5173`.
+
+Frontend will run at:
+
+```text
+http://localhost:5173
+```
+
+---
 
 ## API Overview
-- `GET /api/auth/me` - Validates the current user session.
-- `GET /api/profile/summary` - Retrieves the aggregated completion status of the user's profile.
-- `POST /api/ai/chat` - The core conversational endpoint handling the intelligent prompt loops.
-- `GET /api/jd` - Retrieves all saved job descriptions.
-- `POST /api/resume/generate` - Triggers the tailoring process against a specific JD.
-- `GET /api/resume/history` - Fetches past resume generations.
+
+### Authentication
+
+```http
+GET /api/auth/me
+```
+
+Validates the current user session.
+
+---
+
+### Profile Summary
+
+```http
+GET /api/profile/summary
+```
+
+Returns profile completion status and profile overview.
+
+---
+
+### Conversational AI Assistant
+
+```http
+POST /api/ai/chat
+```
+
+Handles conversational profile building and validation workflows.
+
+---
+
+### Job Descriptions
+
+```http
+GET /api/jd
+```
+
+Retrieve stored job descriptions.
+
+```http
+POST /api/jd
+```
+
+Create a new job description.
+
+---
+
+### Resume Generation
+
+```http
+POST /api/resume/generate
+```
+
+Generate tailored resumes for selected job descriptions.
+
+---
+
+### Resume Analysis
+
+```http
+POST /api/resume/analyze
+```
+
+Analyze uploaded resumes and generate:
+
+- ATS Score
+- Resume Quality Score
+- Matching Skills
+- Missing Skills
+- Improvement Suggestions
+
+---
+
+### Resume History
+
+```http
+GET /api/resume/history
+```
+
+Retrieve previous resume generation sessions.
+
+---
+
+## Current Capabilities
+
+- Conversational profile creation
+- Intelligent input validation
+- ATS-friendly resume generation
+- AI-powered resume tailoring
+- Resume upload and analysis
+- ATS scoring
+- Missing skill detection
+- Resume history management
+- PDF/DOCX export
+- Responsive UI
+- Dark/Light mode support
+
+---
 
 ## Future Enhancements
-- Implementation of the CrewAI multi-agent verification system (Profile Verification Agent).
-- Smart Profile Scoring to grade resumes (Beginner, Developing, Strong, Competitive).
-- Automated GitHub and LinkedIn scraping.
+
+- CrewAI multi-agent profile verification
+- GitHub profile integration
+- LinkedIn profile enrichment
+- Advanced ATS benchmarking
+- Real-time job market intelligence
+- Career readiness scoring
+- Personalized career roadmap generation
+- Multi-model AI support (Gemini, Ollama, OpenAI)
+
+---
+
+## Contributors
+
+- Singam Setty Greeshma Royal
+
+---
+
+## License
+
+This project is developed for educational, research, and career development purposes.

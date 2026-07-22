@@ -10,6 +10,7 @@ import JDWorkspace from './pages/JDWorkspace';
 import ResumeResults from './pages/ResumeResults';
 import HistoryPage from './pages/HistoryPage';
 import SettingsPage from './pages/SettingsPage';
+import AnalyzeResumePage from './pages/AnalyzeResumePage';
 
 // Protected Route Wrapper Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -86,6 +87,11 @@ export default function App() {
         <Route path="/settings" element={
           <ProtectedRoute>
             <SettingsPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/analyze-resume" element={
+          <ProtectedRoute>
+            <AnalyzeResumePage />
           </ProtectedRoute>
         } />
 

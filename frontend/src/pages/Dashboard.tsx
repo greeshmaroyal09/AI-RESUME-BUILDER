@@ -49,13 +49,22 @@ export default function Dashboard() {
               Optimize your profile, map requirements, and generate high-fidelity resume deliverables.
             </p>
           </div>
-          <Link
-            to="/profile"
-            className="flex items-center gap-2 px-4 py-2.5 bg-primary-600 hover:bg-primary-500 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-primary-950/20 w-fit"
-          >
-            <Sparkles className="w-4 h-4" />
-            Launch AI Assistant
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/analyze-resume"
+              className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm font-semibold transition-all border border-slate-700 w-fit shadow-md"
+            >
+              <FileText className="w-4 h-4" />
+              Analyze Resume
+            </Link>
+            <Link
+              to="/profile"
+              className="flex items-center gap-2 px-4 py-2.5 bg-primary-600 hover:bg-primary-500 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-primary-950/20 w-fit"
+            >
+              <Sparkles className="w-4 h-4" />
+              Launch AI Assistant
+            </Link>
+          </div>
         </header>
 
         {/* Core Metrics Grid */}

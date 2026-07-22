@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Response
+from fastapi import APIRouter, Depends, HTTPException, status, Response, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from pydantic import BaseModel
@@ -10,6 +10,7 @@ from app.schemas import ATSAnalysisReport, GeneratedResumeOut
 from app.services.ats_engine import analyze_ats
 from app.services.resume_generator import generate_tailored_resume
 from app.services.exporter import export_pdf, export_docx
+from app.services.resume_analyzer import extract_resume_text, analyze_uploaded_resume
 
 router = APIRouter(prefix="/api/resume", tags=["resume"])
 
@@ -41,6 +42,21 @@ def analyze_profile_against_jd(req: AnalyzeRequest, current_user: User = Depends
         db=db
     )
     return report
+
+@router.post("/analyze-upload")
+async def analyze_uploaded_resume_endpoint(
+    role: str = Form(...),
+    file: UploadFile = File(...),
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    file_bytes = await file.read()
+    try:
+        raw_text = extract_resume_text(file_bytes, file.filename)
+        report = analyze_uploaded_resume(raw_text, role)
+        return {"status": "success", "data": report}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.post("/generate", response_model=GeneratedResumeOut)

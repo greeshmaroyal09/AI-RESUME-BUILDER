@@ -1,4 +1,4 @@
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) || "http://127.0.0.1:8000/api";
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) || (import.meta.env.DEV ? "http://127.0.0.1:8000/api" : "/api");
 
 export async function apiRequest(
   endpoint: string,
